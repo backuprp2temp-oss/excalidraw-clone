@@ -68,6 +68,7 @@ export const LineTool = {
 
     if (Math.abs(dx) < 2 && Math.abs(dy) < 2) {
       scene.removeElements([this.currentElementId]);
+      this.currentElementId = null;
     } else {
       scene.updateElement(this.currentElementId, {
         points: [[0, 0], [dx, dy]],

@@ -26,6 +26,9 @@ export default function PropertiesPanel() {
     for (const id of selectedIds) {
       updateElement(id, updates);
     }
+    if ("strokeColor" in updates) {
+      useStore.getState().setAppState({ currentItemStrokeColor: updates.strokeColor as string });
+    }
   };
 
   const isShape = first.type === "rectangle" || first.type === "ellipse" || first.type === "diamond";

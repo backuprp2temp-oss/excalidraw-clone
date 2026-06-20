@@ -54,11 +54,22 @@ export const PencilTool = {
       maxY = Math.max(maxY, p[1]);
     }
 
+    const newX = el.x + minX;
+    const newY = el.y + minY;
+    const dx = minX;
+    const dy = minY;
+
+    if (dx !== 0 || dy !== 0) {
+      this.points = this.points.map(
+        ([px, py]) => [px - dx, py - dy] as Point,
+      );
+    }
+
     scene.updateElement(this.currentElementId, {
       points: this.points,
       pressures: this.pressures,
-      x: el.x + minX,
-      y: el.y + minY,
+      x: newX,
+      y: newY,
       width: maxX - minX || 1,
       height: maxY - minY || 1,
     });
